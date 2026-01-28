@@ -49,12 +49,40 @@ export default function Header() {
             >
               My Work
             </Link>
-            <Link
-              to="/how-it-works"
-              className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
-            >
-              Learn
-            </Link>
+
+            {/* Learn Dropdown */}
+            <div className="relative group">
+              <button className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium">
+                Learn ▼
+              </button>
+              <div className="absolute left-0 mt-0 w-48 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                <Link
+                  to="/onboarding"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors first:rounded-t-lg"
+                >
+                  Alice's Story (Walkthrough)
+                </Link>
+                <Link
+                  to="/how-it-works"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
+                  How It Works & FAQ
+                </Link>
+                <Link
+                  to="/examples"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
+                  Good vs Bad Examples
+                </Link>
+                <Link
+                  to="/non-technical"
+                  className="block px-4 py-2 text-sm text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors last:rounded-b-lg"
+                >
+                  Beyond Code
+                </Link>
+              </div>
+            </div>
+
             <Link
               to="/profile/me"
               className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
