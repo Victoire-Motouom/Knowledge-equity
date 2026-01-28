@@ -14,6 +14,10 @@ import Domains from "./pages/Domains";
 import MyContributions from "./pages/MyContributions";
 import Settings from "./pages/Settings";
 import HowItWorks from "./pages/HowItWorks";
+import Examples from "./pages/Examples";
+import NonTechnicalExamples from "./pages/NonTechnicalExamples";
+import SubmitReview from "./pages/SubmitReview";
+import Onboarding from "./pages/Onboarding";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +39,10 @@ export default function App() {
             <Route path="/my-contributions" element={<MyContributions />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/examples" element={<Examples />} />
+            <Route path="/non-technical" element={<NonTechnicalExamples />} />
+            <Route path="/review" element={<SubmitReview />} />
+            <Route path="/onboarding" element={<Onboarding />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
