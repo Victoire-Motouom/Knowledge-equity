@@ -1,8 +1,16 @@
 import Header from "@/components/Header";
-import { TrendingUp, Award, Zap, MessageSquare, ThumbsUp } from "lucide-react";
+import { TrendingUp, Award, Zap, MessageSquare, ThumbsUp, Search, X } from "lucide-react";
+import { useState } from "react";
 
 export default function Feed() {
-  const contributions = [
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+
+  const allDomains = ["Distributed Systems", "React", "Architecture", "Backend", "Security"];
+  const allTypes = ["research", "explanation", "critique", "debate"];
+
+  const allContributions = [
     {
       id: 1,
       title: "Understanding Consensus Mechanisms in Distributed Systems",
@@ -39,7 +47,54 @@ export default function Feed() {
       keGained: 28,
       createdAt: "1 day ago",
     },
+    {
+      id: 4,
+      title: "Advanced TypeScript Patterns for Large Codebases",
+      author: "research_lead",
+      domain: "Backend",
+      type: "explanation",
+      icon: Zap,
+      excerpt: "A comprehensive guide to advanced TypeScript patterns that scale with your codebase complexity...",
+      reviews: 6,
+      keGained: 22,
+      createdAt: "2 days ago",
+    },
+    {
+      id: 5,
+      title: "Database Indexing Strategy That Actually Works",
+      author: "distributed_sys_expert",
+      domain: "Backend",
+      type: "research",
+      icon: Award,
+      excerpt: "Real-world indexing strategies backed by performance benchmarks and cost analysis...",
+      reviews: 9,
+      keGained: 38,
+      createdAt: "3 days ago",
+    },
+    {
+      id: 6,
+      title: "Security Audit: Common OAuth 2.0 Misconfigurations",
+      author: "security_expert",
+      domain: "Security",
+      type: "critique",
+      icon: Award,
+      excerpt: "Analysis of real-world OAuth misconfigurations and how to audit your implementation...",
+      reviews: 11,
+      keGained: 42,
+      createdAt: "4 days ago",
+    },
   ];
+
+  const contributions = allContributions.filter((c) => {
+    const matchesSearch =
+      searchTerm === "" ||
+      c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      c.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesDomain = selectedDomain === null || c.domain === selectedDomain;
+    const matchesType = selectedType === null || c.type === selectedType;
+
+    return matchesSearch && matchesDomain && matchesType;
+  });
 
   return (
     <div className="min-h-screen bg-white">
