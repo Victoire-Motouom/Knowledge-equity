@@ -148,13 +148,39 @@ export default function Header() {
             >
               My Work
             </Link>
-            <Link
-              to="/how-it-works"
-              className="block px-4 py-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Learn
-            </Link>
+            <div className="border-t border-border pt-2 mt-2">
+              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground">
+                Learn
+              </div>
+              <Link
+                to="/onboarding"
+                className="block px-4 py-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors text-sm"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Alice's Story
+              </Link>
+              <Link
+                to="/how-it-works"
+                className="block px-4 py-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors text-sm"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                How It Works
+              </Link>
+              <Link
+                to="/examples"
+                className="block px-4 py-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors text-sm"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Examples
+              </Link>
+              <Link
+                to="/non-technical"
+                className="block px-4 py-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors text-sm"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Beyond Code
+              </Link>
+            </div>
             <Link
               to="/profile/me"
               className="block px-4 py-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors"
