@@ -9,6 +9,11 @@ import Feed from "./pages/Feed";
 import Contribute from "./pages/Contribute";
 import Profile from "./pages/Profile";
 import ContributionDetail from "./pages/ContributionDetail";
+import Leaderboard from "./pages/Leaderboard";
+import Domains from "./pages/Domains";
+import MyContributions from "./pages/MyContributions";
+import Settings from "./pages/Settings";
+import HowItWorks from "./pages/HowItWorks";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +30,11 @@ export default function App() {
             <Route path="/contribute" element={<Contribute />} />
             <Route path="/profile/:handle" element={<Profile />} />
             <Route path="/contribution/:id" element={<ContributionDetail />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/domains" element={<Domains />} />
+            <Route path="/my-contributions" element={<MyContributions />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
