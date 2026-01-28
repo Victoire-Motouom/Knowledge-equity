@@ -108,6 +108,137 @@ export default function Feed() {
           </p>
         </div>
 
+        {/* Search */}
+        <div className="mb-6">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Search contributions..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="mb-6 space-y-4">
+          {/* Domain Filter */}
+          <div>
+            <div className="text-sm font-semibold text-foreground mb-2">
+              Filter by Domain
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedDomain(null)}
+                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                  selectedDomain === null
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                }`}
+              >
+                All
+              </button>
+              {allDomains.map((domain) => (
+                <button
+                  key={domain}
+                  onClick={() => setSelectedDomain(domain)}
+                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                    selectedDomain === domain
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  {domain}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Type Filter */}
+          <div>
+            <div className="text-sm font-semibold text-foreground mb-2">
+              Filter by Type
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedType(null)}
+                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                  selectedType === null
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                }`}
+              >
+                All
+              </button>
+              {allTypes.map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setSelectedType(type)}
+                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                    selectedType === type
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  {type.charAt(0).toUpperCase() + type.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Active Filters Display */}
+          {(searchTerm || selectedDomain || selectedType) && (
+            <div className="flex flex-wrap gap-2 items-center pt-2">
+              <span className="text-sm text-muted-foreground">Active filters:</span>
+              {searchTerm && (
+                <div className="bg-primary/10 text-primary px-2 py-1 rounded-full text-sm flex items-center gap-2">
+                  <span>"{searchTerm}"</span>
+                  <button
+                    onClick={() => setSearchTerm("")}
+                    className="hover:text-primary/70"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                </div>
+              )}
+              {selectedDomain && (
+                <div className="bg-primary/10 text-primary px-2 py-1 rounded-full text-sm flex items-center gap-2">
+                  <span>{selectedDomain}</span>
+                  <button
+                    onClick={() => setSelectedDomain(null)}
+                    className="hover:text-primary/70"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                </div>
+              )}
+              {selectedType && (
+                <div className="bg-primary/10 text-primary px-2 py-1 rounded-full text-sm flex items-center gap-2">
+                  <span>{selectedType}</span>
+                  <button
+                    onClick={() => setSelectedType(null)}
+                    className="hover:text-primary/70"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                </div>
+              )}
+              <button
+                onClick={() => {
+                  setSearchTerm("");
+                  setSelectedDomain(null);
+                  setSelectedType(null);
+                }}
+                className="text-sm text-primary hover:underline"
+              >
+                Clear all
+              </button>
+            </div>
+          )}
+        </div>
+
         <div className="space-y-6">
           {contributions.map((contribution) => {
             const Icon = contribution.icon;
