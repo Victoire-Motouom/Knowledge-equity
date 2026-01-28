@@ -297,14 +297,31 @@ export default function Feed() {
           })}
         </div>
 
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            More contributions coming soon. Start by{" "}
-            <a href="/contribute" className="text-primary font-semibold hover:underline">
-              sharing your knowledge
-            </a>
-          </p>
-        </div>
+        {contributions.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground mb-4">
+              No contributions match your filters
+            </p>
+            <button
+              onClick={() => {
+                setSearchTerm("");
+                setSelectedDomain(null);
+                setSelectedType(null);
+              }}
+              className="text-primary font-semibold hover:underline"
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
+
+        {contributions.length > 0 && (
+          <div className="text-center py-8">
+            <p className="text-muted-foreground text-sm">
+              Showing {contributions.length} contribution{contributions.length !== 1 ? "s" : ""}
+            </p>
+          </div>
+        )}
       </main>
     </div>
   );
