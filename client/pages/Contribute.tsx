@@ -1,5 +1,13 @@
 import Header from "@/components/Header";
-import { FileText, Lightbulb, Search, Zap, AlertCircle, CheckCircle2, Link as LinkIcon } from "lucide-react";
+import {
+  FileText,
+  Lightbulb,
+  Search,
+  Zap,
+  AlertCircle,
+  CheckCircle2,
+  Link as LinkIcon,
+} from "lucide-react";
 import { useState } from "react";
 
 export default function Contribute() {
@@ -10,7 +18,8 @@ export default function Contribute() {
       id: "research",
       title: "Research Note",
       subtitle: "Share original analysis and thinking",
-      description: "You've done research, read papers, analyzed data, or synthesized ideas. Now explain what you learned and why it matters.",
+      description:
+        "You've done research, read papers, analyzed data, or synthesized ideas. Now explain what you learned and why it matters.",
       icon: Lightbulb,
       effort: "30-120 min",
       whatToInclude: [
@@ -20,14 +29,16 @@ export default function Contribute() {
         "Citations and sources",
         "Your own analysis (not just summaries)",
       ],
-      example: "Analyzing consensus algorithms in Raft vs PBFT, including performance tradeoffs and when to use each",
+      example:
+        "Analyzing consensus algorithms in Raft vs PBFT, including performance tradeoffs and when to use each",
       minWords: 500,
     },
     {
       id: "explanation",
       title: "Technical Explanation",
       subtitle: "Teach others something you understand deeply",
-      description: "You know how something works. Write it clearly so others can actually understand it. Teaching is work.",
+      description:
+        "You know how something works. Write it clearly so others can actually understand it. Teaching is work.",
       icon: FileText,
       effort: "20-60 min",
       whatToInclude: [
@@ -37,14 +48,16 @@ export default function Contribute() {
         "Real-world examples or use cases",
         "Common misconceptions (what NOT to do)",
       ],
-      example: "How React hooks work under the hood: closure basics, the rules, and why they matter",
+      example:
+        "How React hooks work under the hood: closure basics, the rules, and why they matter",
       minWords: 400,
     },
     {
       id: "bug",
       title: "Bug Analysis",
       subtitle: "Explain a real problem and how to fix it",
-      description: "You found, debugged, or fixed a real issue. Explain the root cause clearly so others can avoid the same trap.",
+      description:
+        "You found, debugged, or fixed a real issue. Explain the root cause clearly so others can avoid the same trap.",
       icon: Search,
       effort: "15-90 min",
       whatToInclude: [
@@ -54,14 +67,16 @@ export default function Contribute() {
         "The fix and why it works",
         "Links to code/PR if public",
       ],
-      example: "Memory leak in async task scheduler: why it happened, reproduction steps, and the fix",
+      example:
+        "Memory leak in async task scheduler: why it happened, reproduction steps, and the fix",
       minWords: 300,
     },
     {
       id: "debate",
       title: "Structured Argument",
       subtitle: "Make a careful, evidence-based case",
-      description: "You disagree with conventional wisdom or have a contrarian take. Explain it rigorously with evidence.",
+      description:
+        "You disagree with conventional wisdom or have a contrarian take. Explain it rigorously with evidence.",
       icon: Zap,
       effort: "20-45 min",
       whatToInclude: [
@@ -71,7 +86,8 @@ export default function Contribute() {
         "Honest limitations of your argument",
         "When you're wrong (what would prove it)",
       ],
-      example: "Why monoliths still win: cost analysis, when microservices fail, and what's being optimized for",
+      example:
+        "Why monoliths still win: cost analysis, when microservices fail, and what's being optimized for",
       minWords: 400,
     },
   ];
@@ -86,9 +102,12 @@ export default function Contribute() {
         {!selected ? (
           <>
             <div className="mb-12">
-              <h1 className="text-4xl font-bold text-foreground mb-3">Share Knowledge</h1>
+              <h1 className="text-4xl font-bold text-foreground mb-3">
+                Share Knowledge
+              </h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                You did real work. Now explain it. Help others understand. Build your reputation.
+                You did real work. Now explain it. Help others understand. Build
+                your reputation.
               </p>
             </div>
 
@@ -98,8 +117,9 @@ export default function Contribute() {
                 What We're Looking For
               </h3>
               <p className="text-muted-foreground text-sm">
-                Not links. Not screenshots. Not "check my GitHub." Real explanation of real work.
-                We want to understand what you did and why it matters. That's what gets reviewed.
+                Not links. Not screenshots. Not "check my GitHub." Real
+                explanation of real work. We want to understand what you did and
+                why it matters. That's what gets reviewed.
               </p>
             </div>
 
@@ -154,8 +174,12 @@ export default function Contribute() {
             </button>
 
             <div className="mb-8">
-              <h1 className="text-4xl font-bold text-foreground mb-2">{type?.title}</h1>
-              <p className="text-lg text-muted-foreground">{type?.description}</p>
+              <h1 className="text-4xl font-bold text-foreground mb-2">
+                {type?.title}
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                {type?.description}
+              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -172,7 +196,8 @@ export default function Contribute() {
                     className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                   <p className="text-xs text-muted-foreground mt-1">
-                    Be specific. Avoid vague titles. Someone should understand what you're talking about immediately.
+                    Be specific. Avoid vague titles. Someone should understand
+                    what you're talking about immediately.
                   </p>
                 </div>
 
@@ -193,7 +218,8 @@ export default function Contribute() {
                     <option>Web Performance</option>
                   </select>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Reviewers have expertise in specific domains. Pick the one where experts should judge your work.
+                    Reviewers have expertise in specific domains. Pick the one
+                    where experts should judge your work.
                   </p>
                 </div>
 
@@ -207,7 +233,8 @@ export default function Contribute() {
                     className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary h-64 font-mono text-sm"
                   />
                   <p className="text-xs text-muted-foreground mt-1">
-                    This is what reviewers read. Be thorough. Link to code, papers, or examples if helpful. Markdown supported.
+                    This is what reviewers read. Be thorough. Link to code,
+                    papers, or examples if helpful. Markdown supported.
                   </p>
                 </div>
 
@@ -223,7 +250,8 @@ export default function Contribute() {
                       className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <p className="text-xs text-muted-foreground">
-                      Links help prove your work is real. But the explanation inside this form is what gets reviewed.
+                      Links help prove your work is real. But the explanation
+                      inside this form is what gets reviewed.
                     </p>
                   </div>
                 </div>
@@ -245,7 +273,8 @@ export default function Contribute() {
                     </select>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Reviewers consider effort when scoring. A 5-hour deep dive deserves different KE than a quick fix.
+                    Reviewers consider effort when scoring. A 5-hour deep dive
+                    deserves different KE than a quick fix.
                   </p>
                 </div>
 
@@ -270,8 +299,13 @@ export default function Contribute() {
                   </h3>
                   <ul className="space-y-2">
                     {type?.whatToInclude.map((item, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                        <span className="text-primary font-bold flex-shrink-0">✓</span>
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground flex gap-2"
+                      >
+                        <span className="text-primary font-bold flex-shrink-0">
+                          ✓
+                        </span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -292,8 +326,13 @@ export default function Contribute() {
                       "Unsubstantiated opinions",
                       "Less than minimum word count",
                     ].map((item, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                        <span className="text-destructive font-bold flex-shrink-0">✗</span>
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground flex gap-2"
+                      >
+                        <span className="text-destructive font-bold flex-shrink-0">
+                          ✗
+                        </span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -302,19 +341,33 @@ export default function Contribute() {
 
                 {/* Example Stats */}
                 <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
-                  <h3 className="font-semibold text-foreground mb-3">Typical Stats</h3>
+                  <h3 className="font-semibold text-foreground mb-3">
+                    Typical Stats
+                  </h3>
                   <div className="space-y-2 text-sm">
                     <div>
-                      <div className="font-medium text-foreground">{type?.minWords}+ words</div>
-                      <div className="text-xs text-muted-foreground">Minimum length</div>
+                      <div className="font-medium text-foreground">
+                        {type?.minWords}+ words
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Minimum length
+                      </div>
                     </div>
                     <div>
-                      <div className="font-medium text-foreground">{type?.effort}</div>
-                      <div className="text-xs text-muted-foreground">Typical effort</div>
+                      <div className="font-medium text-foreground">
+                        {type?.effort}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Typical effort
+                      </div>
                     </div>
                     <div>
-                      <div className="font-medium text-foreground">3-7 days</div>
-                      <div className="text-xs text-muted-foreground">To first review</div>
+                      <div className="font-medium text-foreground">
+                        3-7 days
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        To first review
+                      </div>
                     </div>
                   </div>
                 </div>

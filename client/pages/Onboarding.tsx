@@ -14,20 +14,31 @@ export default function Onboarding() {
           <div className="bg-primary/10 rounded-lg p-6 text-center">
             <div className="text-6xl mb-4">👩‍💻</div>
             <h3 className="text-2xl font-bold text-foreground">Alice</h3>
-            <p className="text-muted-foreground">Backend engineer at a growing startup</p>
+            <p className="text-muted-foreground">
+              Backend engineer at a growing startup
+            </p>
           </div>
 
           <div className="space-y-4">
             <p className="text-muted-foreground">
-              Alice just fixed a subtle race condition bug in their async task scheduler.
+              Alice just fixed a subtle race condition bug in their async task
+              scheduler.
             </p>
 
             <div className="bg-muted/30 rounded-lg p-4 border border-border">
-              <h4 className="font-semibold text-foreground mb-2">What Alice did:</h4>
+              <h4 className="font-semibold text-foreground mb-2">
+                What Alice did:
+              </h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Found a race condition causing random crashes under load</li>
-                <li>• Investigated the root cause through logs and debugging</li>
-                <li>• Implemented a fix using exponential backoff + retry limits</li>
+                <li>
+                  • Found a race condition causing random crashes under load
+                </li>
+                <li>
+                  • Investigated the root cause through logs and debugging
+                </li>
+                <li>
+                  • Implemented a fix using exponential backoff + retry limits
+                </li>
                 <li>• Got it merged into production</li>
               </ul>
             </div>
@@ -62,24 +73,35 @@ export default function Onboarding() {
             </div>
 
             <div className="pt-3 border-t border-border">
-              <div className="font-semibold text-foreground text-sm">Her Explanation</div>
+              <div className="font-semibold text-foreground text-sm">
+                Her Explanation
+              </div>
               <div className="text-muted-foreground text-sm space-y-2 mt-2">
                 <p>
-                  <span className="font-semibold text-foreground">The problem:</span> Task retry handlers
-                  were re-queuing themselves endlessly. Under high load, the error queue
-                  became a cascade.
+                  <span className="font-semibold text-foreground">
+                    The problem:
+                  </span>{" "}
+                  Task retry handlers were re-queuing themselves endlessly.
+                  Under high load, the error queue became a cascade.
                 </p>
                 <p>
-                  <span className="font-semibold text-foreground">Root cause:</span> We
-                  didn't cap retries. A single error spawned more errors.
+                  <span className="font-semibold text-foreground">
+                    Root cause:
+                  </span>{" "}
+                  We didn't cap retries. A single error spawned more errors.
                 </p>
                 <p>
-                  <span className="font-semibold text-foreground">The fix:</span> Exponential
-                  backoff + max 3 retries. Simple, proven pattern.
+                  <span className="font-semibold text-foreground">
+                    The fix:
+                  </span>{" "}
+                  Exponential backoff + max 3 retries. Simple, proven pattern.
                 </p>
                 <p>
-                  <span className="font-semibold text-foreground">Why it matters:</span> Any
-                  queuing system can hit this. Task queues, job schedulers, async handlers.
+                  <span className="font-semibold text-foreground">
+                    Why it matters:
+                  </span>{" "}
+                  Any queuing system can hit this. Task queues, job schedulers,
+                  async handlers.
                 </p>
               </div>
             </div>
@@ -103,7 +125,9 @@ export default function Onboarding() {
           </p>
 
           <div className="bg-muted/30 rounded-lg p-6 border border-border">
-            <h4 className="font-semibold text-foreground mb-3">What happens next:</h4>
+            <h4 className="font-semibold text-foreground mb-3">
+              What happens next:
+            </h4>
             <ul className="space-y-3 text-sm">
               <li className="flex gap-3">
                 <span className="text-primary font-bold flex-shrink-0">1.</span>
@@ -127,9 +151,12 @@ export default function Onboarding() {
           </div>
 
           <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-            <p className="text-sm text-foreground font-semibold mb-2">Key point:</p>
+            <p className="text-sm text-foreground font-semibold mb-2">
+              Key point:
+            </p>
             <p className="text-sm text-muted-foreground">
-              Publishing is just the start. Reputation comes from expert validation.
+              Publishing is just the start. Reputation comes from expert
+              validation.
             </p>
           </div>
         </div>
@@ -143,34 +170,43 @@ export default function Onboarding() {
           <div className="bg-green-500/10 rounded-lg p-6 text-center">
             <div className="text-6xl mb-4">👨‍💼</div>
             <h3 className="text-2xl font-bold text-foreground">Bob</h3>
-            <p className="text-muted-foreground">Senior backend engineer, KE expert</p>
+            <p className="text-muted-foreground">
+              Senior backend engineer, KE expert
+            </p>
           </div>
 
           <p className="text-muted-foreground">
-            Bob has deep experience with task scheduling and distributed systems. He sees
-            Alice's contribution in his feed.
+            Bob has deep experience with task scheduling and distributed
+            systems. He sees Alice's contribution in his feed.
           </p>
 
           <div className="bg-muted/30 rounded-lg p-6 border border-border space-y-3">
             <div className="font-semibold text-foreground">Bob's Review:</div>
 
             <div>
-              <div className="text-sm font-medium text-foreground mb-1">Rating</div>
+              <div className="text-sm font-medium text-foreground mb-1">
+                Rating
+              </div>
               <div className="text-sm text-primary font-semibold">
                 ✓ Confirmed Correct
               </div>
             </div>
 
             <div>
-              <div className="text-sm font-medium text-foreground mb-1">Confidence</div>
+              <div className="text-sm font-medium text-foreground mb-1">
+                Confidence
+              </div>
               <div className="text-sm text-muted-foreground">95% confident</div>
             </div>
 
             <div>
-              <div className="text-sm font-medium text-foreground mb-1">Comment</div>
+              <div className="text-sm font-medium text-foreground mb-1">
+                Comment
+              </div>
               <div className="text-sm text-muted-foreground italic">
-                "Accurate diagnosis and solid fix. The exponential backoff approach is standard
-                practice. This pattern applies to any retry handler, not just task queues."
+                "Accurate diagnosis and solid fix. The exponential backoff
+                approach is standard practice. This pattern applies to any retry
+                handler, not just task queues."
               </div>
             </div>
           </div>
@@ -190,12 +226,15 @@ export default function Onboarding() {
       content: (
         <div className="space-y-6">
           <p className="text-muted-foreground">
-            The system uses a simple, auditable formula to calculate Alice's KE gain:
+            The system uses a simple, auditable formula to calculate Alice's KE
+            gain:
           </p>
 
           <div className="bg-primary/5 rounded-lg p-6 border border-primary/20 font-mono text-sm space-y-3">
             <div>
-              <div className="text-muted-foreground">Base value (research contribution)</div>
+              <div className="text-muted-foreground">
+                Base value (research contribution)
+              </div>
               <div className="text-foreground font-bold">= 30 KE</div>
             </div>
 
@@ -222,13 +261,13 @@ export default function Onboarding() {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            (This is simplified. Real calculation includes multiple reviews, effort adjustment,
-            and historical patterns.)
+            (This is simplified. Real calculation includes multiple reviews,
+            effort adjustment, and historical patterns.)
           </p>
 
           <p className="text-sm text-muted-foreground italic">
-            Key insight: A review from someone with 1200 KE in the domain is worth way more
-            than one from a newcomer. Credibility matters.
+            Key insight: A review from someone with 1200 KE in the domain is
+            worth way more than one from a newcomer. Credibility matters.
           </p>
         </div>
       ),
@@ -242,15 +281,17 @@ export default function Onboarding() {
             <h4 className="font-semibold text-foreground">For Alice:</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                ✓ She now has <span className="font-semibold text-foreground">88 KE</span>{" "}
-                in "Backend" domain
+                ✓ She now has{" "}
+                <span className="font-semibold text-foreground">88 KE</span> in
+                "Backend" domain
               </li>
               <li>✓ Her profile shows this contribution and the validation</li>
               <li>
                 ✓ When she applies for a role, she can point to this as evidence
               </li>
               <li>
-                ✓ As she contributes more, her reputation in the domain compounds
+                ✓ As she contributes more, her reputation in the domain
+                compounds
               </li>
             </ul>
           </div>
@@ -260,7 +301,9 @@ export default function Onboarding() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 ✓ He earns KE for providing a{" "}
-                <span className="font-semibold text-foreground">useful review</span>
+                <span className="font-semibold text-foreground">
+                  useful review
+                </span>
               </li>
               <li>✓ His reviews are auditable – anyone can see them</li>
               <li>
@@ -271,7 +314,9 @@ export default function Onboarding() {
           </div>
 
           <div className="bg-muted/30 rounded-lg p-6 border border-border space-y-4 pt-6">
-            <h4 className="font-semibold text-foreground">For the Community:</h4>
+            <h4 className="font-semibold text-foreground">
+              For the Community:
+            </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 ✓ A real lesson is documented and{" "}
@@ -299,7 +344,8 @@ export default function Onboarding() {
               {
                 icon: "🧠",
                 title: "Explanation",
-                description: "The explanation is what gets evaluated, not just the work.",
+                description:
+                  "The explanation is what gets evaluated, not just the work.",
               },
               {
                 icon: "👥",
@@ -314,7 +360,8 @@ export default function Onboarding() {
               {
                 icon: "🎯",
                 title: "Incentive Aligned",
-                description: "Good reviewers and contributors build reputation.",
+                description:
+                  "Good reviewers and contributors build reputation.",
               },
               {
                 icon: "🛡️",
@@ -322,19 +369,28 @@ export default function Onboarding() {
                 description: "Can't fake it with bots or coordinated friends.",
               },
             ].map((item, i) => (
-              <div key={i} className="rounded-lg p-4 bg-muted/30 border border-border">
+              <div
+                key={i}
+                className="rounded-lg p-4 bg-muted/30 border border-border"
+              >
                 <div className="text-3xl mb-2">{item.icon}</div>
-                <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <h4 className="font-semibold text-foreground mb-1">
+                  {item.title}
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
 
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
-            <h4 className="font-semibold text-foreground mb-2">The Net Result</h4>
+            <h4 className="font-semibold text-foreground mb-2">
+              The Net Result
+            </h4>
             <p className="text-muted-foreground">
-              Reputation that actually means something. Not followers, not upvotes. Real
-              validation from experts in your field.
+              Reputation that actually means something. Not followers, not
+              upvotes. Real validation from experts in your field.
             </p>
           </div>
         </div>
@@ -351,8 +407,8 @@ export default function Onboarding() {
               You Have Knowledge. Share It.
             </h3>
             <p className="text-muted-foreground mb-6">
-              Pick one thing you understand deeply. Explain it clearly. Get reviewed by
-              experts. Build real reputation.
+              Pick one thing you understand deeply. Explain it clearly. Get
+              reviewed by experts. Build real reputation.
             </p>
           </div>
 
@@ -374,17 +430,19 @@ export default function Onboarding() {
               </li>
               <li className="flex gap-3">
                 <span className="font-bold text-primary flex-shrink-0">2.</span>
-                <span>Write a clear explanation (500+ words, depends on type)</span>
+                <span>
+                  Write a clear explanation (500+ words, depends on type)
+                </span>
               </li>
               <li className="flex gap-3">
                 <span className="font-bold text-primary flex-shrink-0">3.</span>
-                <span>Publish and wait for expert reviews (3-7 days typical)</span>
+                <span>
+                  Publish and wait for expert reviews (3-7 days typical)
+                </span>
               </li>
               <li className="flex gap-3">
                 <span className="font-bold text-primary flex-shrink-0">4.</span>
-                <span>
-                  Respond to feedback and watch your reputation grow
-                </span>
+                <span>Respond to feedback and watch your reputation grow</span>
               </li>
             </ol>
           </div>

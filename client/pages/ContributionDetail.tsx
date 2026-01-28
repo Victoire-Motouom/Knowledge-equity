@@ -16,8 +16,7 @@ export default function ContributionDetail() {
   // Mock contribution data
   const contribution = {
     id,
-    title:
-      "Understanding Consensus Mechanisms in Distributed Systems",
+    title: "Understanding Consensus Mechanisms in Distributed Systems",
     author: "alex_researcher",
     domain: "Distributed Systems",
     type: "research",
@@ -141,7 +140,9 @@ Practical Byzantine Fault Tolerance offers...
               <div className="text-2xl font-bold text-accent">
                 {contribution.stats.avgConfidence.toFixed(1)}
               </div>
-              <div className="text-xs text-muted-foreground">Avg Confidence</div>
+              <div className="text-xs text-muted-foreground">
+                Avg Confidence
+              </div>
             </div>
           </div>
 
@@ -282,7 +283,9 @@ Practical Byzantine Fault Tolerance offers...
 
             {/* Submit Review */}
             <div className="border border-primary/30 bg-primary/5 rounded-xl p-6">
-              <h3 className="font-bold text-foreground mb-3">Submit Your Review</h3>
+              <h3 className="font-bold text-foreground mb-3">
+                Submit Your Review
+              </h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Expert reviews help build knowledge equity. Only domain experts
                 should review.

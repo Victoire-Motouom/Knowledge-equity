@@ -46,7 +46,8 @@ export default function SubmitReview() {
     {
       id: "incorrect_constructive",
       title: "Incorrect but Constructive",
-      description: "The analysis has flaws, but the effort is valuable for discussion.",
+      description:
+        "The analysis has flaws, but the effort is valuable for discussion.",
       color: "orange",
       keMultiplier: "0.4x",
     },
@@ -157,8 +158,8 @@ export default function SubmitReview() {
 
                 <div className="space-y-4">
                   <p className="text-muted-foreground">
-                    Your review weights more heavily if you have high confidence in your
-                    judgment. Only rate your actual certainty.
+                    Your review weights more heavily if you have high confidence
+                    in your judgment. Only rate your actual certainty.
                   </p>
 
                   <div className="space-y-3">
@@ -180,8 +181,8 @@ export default function SubmitReview() {
                           confidence < 40
                             ? "text-destructive"
                             : confidence < 70
-                            ? "text-amber-500"
-                            : "text-green-600"
+                              ? "text-amber-500"
+                              : "text-green-600"
                         }`}
                       >
                         {confidence}%
@@ -196,28 +197,32 @@ export default function SubmitReview() {
                         confidence < 40
                           ? "bg-destructive/10 text-destructive"
                           : confidence < 70
-                          ? "bg-amber-500/10 text-amber-700"
-                          : "bg-green-600/10 text-green-700"
+                            ? "bg-amber-500/10 text-amber-700"
+                            : "bg-green-600/10 text-green-700"
                       }`}
                     >
                       {confidence < 40 && (
                         <>
-                          <span className="font-semibold">Low confidence:</span> Your
-                          review will have low weight. Only submit if you really need to
-                          flag an issue.
+                          <span className="font-semibold">Low confidence:</span>{" "}
+                          Your review will have low weight. Only submit if you
+                          really need to flag an issue.
                         </>
                       )}
                       {confidence >= 40 && confidence < 70 && (
                         <>
-                          <span className="font-semibold">Moderate confidence:</span> Your
-                          review contributes meaningfully to the score.
+                          <span className="font-semibold">
+                            Moderate confidence:
+                          </span>{" "}
+                          Your review contributes meaningfully to the score.
                         </>
                       )}
                       {confidence >= 70 && (
                         <>
-                          <span className="font-semibold">High confidence:</span> Your
-                          review has strong weight. Reviewers with high KE in this domain
-                          influence final scores significantly.
+                          <span className="font-semibold">
+                            High confidence:
+                          </span>{" "}
+                          Your review has strong weight. Reviewers with high KE
+                          in this domain influence final scores significantly.
                         </>
                       )}
                     </div>
@@ -234,8 +239,8 @@ export default function SubmitReview() {
                 </h2>
 
                 <p className="text-muted-foreground mb-4">
-                  This comment helps the author improve and helps other reviewers calibrate
-                  their assessment. Be specific.
+                  This comment helps the author improve and helps other
+                  reviewers calibrate their assessment. Be specific.
                 </p>
 
                 <textarea
@@ -259,7 +264,8 @@ Always: Be concrete. Cite specific sections. Show you read it.`}
                 />
 
                 <p className="text-xs text-muted-foreground mt-2">
-                  Minimum 50 characters. Be thoughtful – this is part of your reputation too.
+                  Minimum 50 characters. Be thoughtful – this is part of your
+                  reputation too.
                 </p>
               </section>
             )}
@@ -287,19 +293,27 @@ Always: Be concrete. Cite specific sections. Show you read it.`}
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex gap-2">
-                  <span className="text-primary font-bold flex-shrink-0">•</span>
+                  <span className="text-primary font-bold flex-shrink-0">
+                    •
+                  </span>
                   <span>You can't review your own work</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary font-bold flex-shrink-0">•</span>
+                  <span className="text-primary font-bold flex-shrink-0">
+                    •
+                  </span>
                   <span>Your reviews are public and auditable</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary font-bold flex-shrink-0">•</span>
+                  <span className="text-primary font-bold flex-shrink-0">
+                    •
+                  </span>
                   <span>Your KE is weighted by your domain expertise</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary font-bold flex-shrink-0">•</span>
+                  <span className="text-primary font-bold flex-shrink-0">
+                    •
+                  </span>
                   <span>Low-quality reviews harm your reputation</span>
                 </li>
               </ul>
@@ -346,8 +360,8 @@ Always: Be concrete. Cite specific sections. Show you read it.`}
               <p className="text-sm text-muted-foreground">
                 "Accurate breakdown of Raft consensus. The explanation of log
                 replication is particularly clear. One minor point: the
-                performance comparison with Paxos would be stronger with
-                latency numbers, not just message complexity."
+                performance comparison with Paxos would be stronger with latency
+                numbers, not just message complexity."
               </p>
             </div>
           </div>

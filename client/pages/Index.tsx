@@ -41,15 +41,21 @@ export default function Index() {
             <div className="grid grid-cols-3 gap-4 pt-8">
               <div>
                 <div className="text-3xl font-bold text-primary">1K+</div>
-                <div className="text-sm text-muted-foreground">Contributions</div>
+                <div className="text-sm text-muted-foreground">
+                  Contributions
+                </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">500+</div>
-                <div className="text-sm text-muted-foreground">Active Members</div>
+                <div className="text-sm text-muted-foreground">
+                  Active Members
+                </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">10+</div>
-                <div className="text-sm text-muted-foreground">Knowledge Domains</div>
+                <div className="text-sm text-muted-foreground">
+                  Knowledge Domains
+                </div>
               </div>
             </div>
           </div>
@@ -206,8 +212,7 @@ export default function Index() {
             },
             {
               title: "Technical Explanations",
-              description:
-                "Deep dives. Teaching others. Building the commons.",
+              description: "Deep dives. Teaching others. Building the commons.",
               icon: "🔬",
             },
             {

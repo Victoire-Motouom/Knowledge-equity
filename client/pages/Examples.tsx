@@ -43,12 +43,14 @@ https://github.com/project/pull/2847 (merged)`,
           {
             reviewer: "sam_coder",
             rating: "Confirmed correct",
-            comment: "Clear investigation. The exponential backoff solution is standard practice.",
+            comment:
+              "Clear investigation. The exponential backoff solution is standard practice.",
           },
           {
             reviewer: "backend_expert",
             rating: "Valuable insight",
-            comment: "Good catch on the cascade pattern. Applies to many queue systems.",
+            comment:
+              "Good catch on the cascade pattern. Applies to many queue systems.",
           },
         ],
         ke: 42,
@@ -78,7 +80,8 @@ Works better now.`,
           {
             reviewer: "reviewer1",
             rating: "Request changes",
-            comment: "What was the bug? Why did it happen? Why does your fix work? I have no idea what to evaluate.",
+            comment:
+              "What was the bug? Why did it happen? Why does your fix work? I have no idea what to evaluate.",
           },
         ],
         ke: 0,
@@ -141,7 +144,8 @@ Most engineers should reach for Raft first. PBFT is not "better" – it's for di
           {
             reviewer: "distributed_sys_expert",
             rating: "Novel insight",
-            comment: "Good framing of the tradeoff. Most people don't think about the O(N²) cost until it's too late.",
+            comment:
+              "Good framing of the tradeoff. Most people don't think about the O(N²) cost until it's too late.",
           },
           {
             reviewer: "research_lead",
@@ -181,7 +185,8 @@ Hope this helps!`,
           {
             reviewer: "reviewer1",
             rating: "Request changes",
-            comment: "This is just a summary of what's already on Wikipedia. Where's your thinking? What did you learn? Why should I read this instead of Wikipedia?",
+            comment:
+              "This is just a summary of what's already on Wikipedia. Where's your thinking? What did you learn? Why should I read this instead of Wikipedia?",
           },
         ],
         ke: 0,
@@ -251,12 +256,14 @@ Start monolith. Split when pain is real, not theoretical.`,
           {
             reviewer: "backend_architect",
             rating: "Valuable but incomplete",
-            comment: "Good practical cost analysis. Missing: migration path if you do need to split later. Still solid.",
+            comment:
+              "Good practical cost analysis. Missing: migration path if you do need to split later. Still solid.",
           },
           {
             reviewer: "tech_lead",
             rating: "Confirmed correct",
-            comment: "This matches our experience. Started monolith, still monolith at $10M revenue.",
+            comment:
+              "This matches our experience. Started monolith, still monolith at $10M revenue.",
           },
         ],
         ke: 38,
@@ -291,7 +298,8 @@ The tech industry is broken.`,
           {
             reviewer: "reviewer1",
             rating: "Request changes",
-            comment: "This is opinion. Where's evidence? You claim 'wrong' usage – what does 'right' look like? 'Hype' isn't an argument. Rewrite with specifics.",
+            comment:
+              "This is opinion. Where's evidence? You claim 'wrong' usage – what does 'right' look like? 'Hype' isn't an argument. Rewrite with specifics.",
           },
         ],
         ke: 0,
@@ -316,18 +324,22 @@ The tech industry is broken.`,
             Good vs Bad Contributions
           </h1>
           <p className="text-lg text-muted-foreground">
-            Real examples of what gets published and what gets rejected. See why.
+            Real examples of what gets published and what gets rejected. See
+            why.
           </p>
         </div>
 
         <div className="space-y-6">
           {examples.map((example) => (
-            <div key={example.id} className="border border-border rounded-xl overflow-hidden">
+            <div
+              key={example.id}
+              className="border border-border rounded-xl overflow-hidden"
+            >
               {/* Header */}
               <button
                 onClick={() =>
                   setExpandedExample(
-                    expandedExample === example.id ? null : example.id
+                    expandedExample === example.id ? null : example.id,
                   )
                 }
                 className="w-full px-6 py-4 bg-muted/30 flex items-center justify-between hover:bg-muted/50 transition-colors text-left"
@@ -379,7 +391,8 @@ The tech industry is broken.`,
                       {example.contribution.content}
                     </div>
                     <div className="mt-4 pt-4 border-t border-border text-xs text-muted-foreground">
-                      ...{Math.ceil(example.contribution.content.length / 20)} word excerpt
+                      ...{Math.ceil(example.contribution.content.length / 20)}{" "}
+                      word excerpt
                     </div>
                   </div>
 
@@ -457,13 +470,23 @@ The tech industry is broken.`,
           </h3>
           <div className="space-y-3 text-muted-foreground">
             <p>
-              <span className="font-semibold text-foreground">Good contributions:</span> Show your thinking. Explain why it matters. Give readers something they didn't know. Help them make decisions.
+              <span className="font-semibold text-foreground">
+                Good contributions:
+              </span>{" "}
+              Show your thinking. Explain why it matters. Give readers something
+              they didn't know. Help them make decisions.
             </p>
             <p>
-              <span className="font-semibold text-foreground">Bad contributions:</span> Just post a link. Summarize public info. Make claims without evidence. Tell, don't show.
+              <span className="font-semibold text-foreground">
+                Bad contributions:
+              </span>{" "}
+              Just post a link. Summarize public info. Make claims without
+              evidence. Tell, don't show.
             </p>
             <p className="pt-3 text-sm">
-              The system rewards explanation and thinking, not just doing work. Anyone can fix a bug. But explaining why the bug happened and why your fix works? That's what builds reputation.
+              The system rewards explanation and thinking, not just doing work.
+              Anyone can fix a bug. But explaining why the bug happened and why
+              your fix works? That's what builds reputation.
             </p>
           </div>
         </div>

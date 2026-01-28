@@ -23,9 +23,24 @@ export default function Profile() {
   ];
 
   const recentActivity = [
-    { type: "contribution", title: "Consensus Mechanisms Deep Dive", ke: 45, date: "2 hours ago" },
-    { type: "review", title: "Reviewed: Database Indexing Guide", ke: 12, date: "1 day ago" },
-    { type: "contribution", title: "PostgreSQL Query Optimization", ke: 38, date: "3 days ago" },
+    {
+      type: "contribution",
+      title: "Consensus Mechanisms Deep Dive",
+      ke: 45,
+      date: "2 hours ago",
+    },
+    {
+      type: "review",
+      title: "Reviewed: Database Indexing Guide",
+      ke: 12,
+      date: "1 day ago",
+    },
+    {
+      type: "contribution",
+      title: "PostgreSQL Query Optimization",
+      ke: 38,
+      date: "3 days ago",
+    },
   ];
 
   return (
@@ -51,7 +66,9 @@ export default function Profile() {
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  <span>Joined {new Date(user.joinedAt).toLocaleDateString()}</span>
+                  <span>
+                    Joined {new Date(user.joinedAt).toLocaleDateString()}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4" />
@@ -99,7 +116,9 @@ export default function Profile() {
                             {activity.date}
                           </span>
                         </div>
-                        <p className="text-foreground font-medium">{activity.title}</p>
+                        <p className="text-foreground font-medium">
+                          {activity.title}
+                        </p>
                       </div>
                       <div className="text-right flex-shrink-0">
                         <div className="text-lg font-bold text-primary">
@@ -114,12 +133,16 @@ export default function Profile() {
 
             {/* Expertise */}
             <section>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Expertise</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-4">
+                Expertise
+              </h2>
               <div className="space-y-3">
                 {user.primaryDomains.map((domain) => (
                   <div key={domain} className="flex items-center gap-3">
                     <Globe className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                    <span className="text-foreground font-medium">{domain}</span>
+                    <span className="text-foreground font-medium">
+                      {domain}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -167,19 +190,25 @@ export default function Profile() {
                   <div className="text-2xl font-bold text-primary">
                     {user.contributions}
                   </div>
-                  <div className="text-sm text-muted-foreground">Contributions</div>
+                  <div className="text-sm text-muted-foreground">
+                    Contributions
+                  </div>
                 </div>
                 <div className="pt-3 border-t border-border">
                   <div className="text-2xl font-bold text-primary">
                     {user.reviews}
                   </div>
-                  <div className="text-sm text-muted-foreground">Reviews Given</div>
+                  <div className="text-sm text-muted-foreground">
+                    Reviews Given
+                  </div>
                 </div>
                 <div className="pt-3 border-t border-border">
                   <div className="text-2xl font-bold text-primary">
                     {(user.keGlobal / 500).toFixed(1)}x
                   </div>
-                  <div className="text-sm text-muted-foreground">Average Impact</div>
+                  <div className="text-sm text-muted-foreground">
+                    Average Impact
+                  </div>
                 </div>
               </div>
             </section>

@@ -1,5 +1,12 @@
 import Header from "@/components/Header";
-import { ChevronDown, Zap, Users, TrendingUp, Shield, BookOpen } from "lucide-react";
+import {
+  ChevronDown,
+  Zap,
+  Users,
+  TrendingUp,
+  Shield,
+  BookOpen,
+} from "lucide-react";
 import { useState } from "react";
 
 export default function HowItWorks() {

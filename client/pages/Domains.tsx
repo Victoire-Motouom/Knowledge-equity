@@ -9,7 +9,8 @@ export default function Domains() {
     {
       id: "distributed-systems",
       name: "Distributed Systems",
-      description: "Consensus algorithms, scalability, fault tolerance, and distributed consensus",
+      description:
+        "Consensus algorithms, scalability, fault tolerance, and distributed consensus",
       icon: "🔄",
       contributions: 156,
       experts: 24,
@@ -19,7 +20,8 @@ export default function Domains() {
     {
       id: "react",
       name: "React",
-      description: "Frontend library, hooks, performance optimization, and component patterns",
+      description:
+        "Frontend library, hooks, performance optimization, and component patterns",
       icon: "⚛️",
       contributions: 142,
       experts: 19,
@@ -29,7 +31,8 @@ export default function Domains() {
     {
       id: "backend-architecture",
       name: "Backend Architecture",
-      description: "System design, database patterns, API design, and microservices",
+      description:
+        "System design, database patterns, API design, and microservices",
       icon: "🏗️",
       contributions: 128,
       experts: 22,
@@ -39,7 +42,8 @@ export default function Domains() {
     {
       id: "security",
       name: "Security",
-      description: "Cryptography, authentication, authorization, and vulnerability analysis",
+      description:
+        "Cryptography, authentication, authorization, and vulnerability analysis",
       icon: "🔒",
       contributions: 94,
       experts: 18,
@@ -49,7 +53,8 @@ export default function Domains() {
     {
       id: "devops",
       name: "DevOps",
-      description: "Infrastructure, deployment, monitoring, and operational excellence",
+      description:
+        "Infrastructure, deployment, monitoring, and operational excellence",
       icon: "🚀",
       contributions: 87,
       experts: 15,
@@ -59,7 +64,8 @@ export default function Domains() {
     {
       id: "databases",
       name: "Databases",
-      description: "SQL, NoSQL, indexing, query optimization, and data modeling",
+      description:
+        "SQL, NoSQL, indexing, query optimization, and data modeling",
       icon: "🗄️",
       contributions: 112,
       experts: 20,
@@ -99,7 +105,8 @@ export default function Domains() {
     {
       id: "testing",
       name: "Testing",
-      description: "Unit tests, integration tests, E2E testing, and test strategies",
+      description:
+        "Unit tests, integration tests, E2E testing, and test strategies",
       icon: "✅",
       contributions: 65,
       experts: 10,
@@ -111,7 +118,7 @@ export default function Domains() {
   const filteredDomains = domains.filter(
     (domain) =>
       domain.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      domain.description.toLowerCase().includes(searchTerm.toLowerCase())
+      domain.description.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -155,7 +162,9 @@ export default function Domains() {
             <div
               key={domain.id}
               className={`border rounded-xl p-6 hover:shadow-lg transition-all cursor-pointer group ${
-                domain.trending ? "border-accent/50 bg-accent/5" : "border-border"
+                domain.trending
+                  ? "border-accent/50 bg-accent/5"
+                  : "border-border"
               }`}
             >
               {/* Header */}

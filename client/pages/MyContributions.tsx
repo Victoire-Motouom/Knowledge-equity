@@ -81,7 +81,7 @@ export default function MyContributions() {
 
   const draftCount = contributions.filter((c) => c.status === "draft").length;
   const publishedCount = contributions.filter(
-    (c) => c.status === "published"
+    (c) => c.status === "published",
   ).length;
   const totalKe = contributions
     .filter((c) => c.status === "published")
@@ -203,7 +203,9 @@ export default function MyContributions() {
                         <span className="font-semibold text-foreground">
                           {contribution.views}
                         </span>
-                        <span className="text-muted-foreground ml-1">views</span>
+                        <span className="text-muted-foreground ml-1">
+                          views
+                        </span>
                       </div>
                       <div>
                         <span className="font-semibold text-foreground">
@@ -225,20 +227,32 @@ export default function MyContributions() {
 
                 {/* Actions */}
                 <div className="flex gap-2 flex-shrink-0">
-                  <button className="p-2 hover:bg-secondary rounded-lg transition-colors" title="Edit">
+                  <button
+                    className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                    title="Edit"
+                  >
                     <Edit className="w-4 h-4 text-muted-foreground" />
                   </button>
                   {contribution.status === "published" && (
-                    <button className="p-2 hover:bg-secondary rounded-lg transition-colors" title="View">
+                    <button
+                      className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                      title="View"
+                    >
                       <Eye className="w-4 h-4 text-muted-foreground" />
                     </button>
                   )}
                   {contribution.status === "draft" && (
-                    <button className="p-2 hover:bg-primary/10 rounded-lg transition-colors" title="Publish">
+                    <button
+                      className="p-2 hover:bg-primary/10 rounded-lg transition-colors"
+                      title="Publish"
+                    >
                       <Send className="w-4 h-4 text-primary" />
                     </button>
                   )}
-                  <button className="p-2 hover:bg-destructive/10 rounded-lg transition-colors" title="Delete">
+                  <button
+                    className="p-2 hover:bg-destructive/10 rounded-lg transition-colors"
+                    title="Delete"
+                  >
                     <Trash2 className="w-4 h-4 text-destructive" />
                   </button>
                 </div>

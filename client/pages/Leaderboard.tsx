@@ -99,11 +99,19 @@ export default function Leaderboard() {
     ],
   };
 
-  const domains = ["all", "Distributed Systems", "React", "Security", "Backend", "DevOps"];
+  const domains = [
+    "all",
+    "Distributed Systems",
+    "React",
+    "Security",
+    "Backend",
+    "DevOps",
+  ];
 
-  const displayLeaders = selectedDomain === "all" 
-    ? globalLeaders 
-    : (domainLeaders[selectedDomain as keyof typeof domainLeaders] || []);
+  const displayLeaders =
+    selectedDomain === "all"
+      ? globalLeaders
+      : domainLeaders[selectedDomain as keyof typeof domainLeaders] || [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -241,8 +249,12 @@ export default function Leaderboard() {
         <div className="mt-12 bg-primary/5 border border-primary/20 rounded-xl p-6">
           <h3 className="font-bold text-foreground mb-2">How Rankings Work</h3>
           <ul className="text-sm text-muted-foreground space-y-1">
-            <li>• Knowledge Equity is earned through validated contributions</li>
-            <li>• Expert reviews weight heavily based on reviewer credibility</li>
+            <li>
+              • Knowledge Equity is earned through validated contributions
+            </li>
+            <li>
+              • Expert reviews weight heavily based on reviewer credibility
+            </li>
             <li>• Domain-specific KE tracks expertise in focused areas</li>
             <li>• Global ranking aggregates all domain contributions</li>
           </ul>

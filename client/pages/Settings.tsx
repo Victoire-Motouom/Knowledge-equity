@@ -21,7 +21,9 @@ export default function Settings() {
   const [domainInput, setDomainInput] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -42,7 +44,9 @@ export default function Settings() {
       <Header />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-bold text-foreground mb-8">Account Settings</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-8">
+          Account Settings
+        </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Sidebar Navigation */}
@@ -206,8 +210,8 @@ export default function Settings() {
                 </div>
 
                 <p className="text-xs text-muted-foreground">
-                  Add domains where you have expertise. This helps reviewers identify
-                  your areas of knowledge.
+                  Add domains where you have expertise. This helps reviewers
+                  identify your areas of knowledge.
                 </p>
               </div>
             </section>

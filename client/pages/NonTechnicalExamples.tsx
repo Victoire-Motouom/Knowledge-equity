@@ -19,7 +19,11 @@ Real analysis:
 
 This isn't "here's the pros and cons." It's: "Here's what actually works and why."`,
       reviews: [
-        { reviewer: "vp_product", comment: "Finally someone with data. Saved us from a freemium mistake." },
+        {
+          reviewer: "vp_product",
+          comment:
+            "Finally someone with data. Saved us from a freemium mistake.",
+        },
       ],
     },
     {
@@ -38,7 +42,11 @@ What the research shows:
 
 This is behavioral psychology applied to engineering teams.`,
       reviews: [
-        { reviewer: "coach_lead", comment: "Backed by research, not opinion. Changed how we run meetings." },
+        {
+          reviewer: "coach_lead",
+          comment:
+            "Backed by research, not opinion. Changed how we run meetings.",
+        },
       ],
     },
     {
@@ -57,7 +65,10 @@ The analysis:
 
 Hard to implement? Yes. Worth it? Depends on your goal.`,
       reviews: [
-        { reviewer: "finance_lead", comment: "This is what we needed. Justified our pricing change." },
+        {
+          reviewer: "finance_lead",
+          comment: "This is what we needed. Justified our pricing change.",
+        },
       ],
     },
     {
@@ -80,12 +91,16 @@ We measured:
 
 How to fix it: structured feedback at week 2, clarity at week 3.`,
       reviews: [
-        { reviewer: "hr_director", comment: "Explains why our turnover was week 3. Fixed it." },
+        {
+          reviewer: "hr_director",
+          comment: "Explains why our turnover was week 3. Fixed it.",
+        },
       ],
     },
     {
       domain: "Marketing",
-      title: "Why B2B Startups Fail to Land Enterprises (Even With Great Products)",
+      title:
+        "Why B2B Startups Fail to Land Enterprises (Even With Great Products)",
       author: "founder_consultant",
       ke: 71,
       excerpt: `Good product + enterprise interest ≠ enterprise deals.
@@ -105,12 +120,16 @@ Real playbook:
 
 Not "tips." Actual process.`,
       reviews: [
-        { reviewer: "ceo_peer", comment: "Saved us 6 months of chasing the wrong buyer." },
+        {
+          reviewer: "ceo_peer",
+          comment: "Saved us 6 months of chasing the wrong buyer.",
+        },
       ],
     },
     {
       domain: "Writing",
-      title: "Technical Communication: Why Most Engineering Docs Are Unreadable",
+      title:
+        "Technical Communication: Why Most Engineering Docs Are Unreadable",
       author: "docs_expert",
       ke: 43,
       excerpt: `Engineers write docs like engineers: precise, comprehensive, unreadable.
@@ -130,7 +149,11 @@ Examples of good vs bad technical writing.
 Patterns that work.
 Why they work.`,
       reviews: [
-        { reviewer: "tech_writer", comment: "Finally someone articulated what I've been struggling to get engineers to do." },
+        {
+          reviewer: "tech_writer",
+          comment:
+            "Finally someone articulated what I've been struggling to get engineers to do.",
+        },
       ],
     },
   ];
@@ -145,7 +168,8 @@ Why they work.`,
             Beyond Code
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl">
-            The Knowledge Equity system works for any expert field. Here's how non-technical contributions work.
+            The Knowledge Equity system works for any expert field. Here's how
+            non-technical contributions work.
           </p>
         </div>
 
@@ -155,8 +179,9 @@ Why they work.`,
             The Pattern Applies Everywhere
           </h3>
           <p className="text-muted-foreground">
-            Whether you're writing about system design, business strategy, psychology, or anything else:
-            Real thinking + evidence + clear explanation = reputation.
+            Whether you're writing about system design, business strategy,
+            psychology, or anything else: Real thinking + evidence + clear
+            explanation = reputation.
           </p>
         </div>
 
@@ -258,7 +283,9 @@ Why they work.`,
                   <CheckCircle2 className="w-4 h-4 text-primary" />
                   {item.title}
                 </h4>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -295,7 +322,8 @@ Why they work.`,
           </div>
 
           <p className="text-sm text-muted-foreground mt-6">
-            Not just tech. The system works for any knowledge domain where experts can validate expertise.
+            Not just tech. The system works for any knowledge domain where
+            experts can validate expertise.
           </p>
         </div>
 
@@ -305,7 +333,8 @@ Why they work.`,
             Ready to share your expertise?
           </h3>
           <p className="text-muted-foreground mb-6">
-            You have deep knowledge in something. Explain it. Get reviewed by peers. Build reputation.
+            You have deep knowledge in something. Explain it. Get reviewed by
+            peers. Build reputation.
           </p>
           <a
             href="/contribute"

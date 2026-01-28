@@ -10,11 +10,16 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 font-bold text-xl flex-shrink-0">
+          <Link
+            to="/"
+            className="flex items-center gap-2 font-bold text-xl flex-shrink-0"
+          >
             <div className="p-2 bg-primary rounded-lg">
               <Zap className="w-5 h-5 text-white" />
             </div>
-            <span className="text-primary hidden sm:inline">Knowledge Equity</span>
+            <span className="text-primary hidden sm:inline">
+              Knowledge Equity
+            </span>
           </Link>
 
           {/* Navigation */}
