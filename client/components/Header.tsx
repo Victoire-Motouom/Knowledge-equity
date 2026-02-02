@@ -292,7 +292,7 @@ export default function Header() {
 
 function NotificationBell() {
   const navigate = useNavigate();
-  const { notifications, unreadCount, markAllRead, markRead } =
+  const { notifications, unreadCount, markAllRead, markRead, error } =
     useNotifications();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -345,7 +345,9 @@ function NotificationBell() {
             </button>
           </div>
           <div className="max-h-72 overflow-auto">
-            {notifications.length === 0 ? (
+            {error ? (
+              <div className="px-3 py-4 text-sm text-red-500">{error}</div>
+            ) : notifications.length === 0 ? (
               <div className="px-3 py-4 text-sm text-muted-foreground">
                 No notifications yet.
               </div>

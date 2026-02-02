@@ -27,6 +27,7 @@ export function useNotifications() {
   const { accessToken } = useAuth();
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [error, setError] = useState<string | null>(null);
   const lastSeenId = useRef<number | null>(null);
 
   useEffect(() => {
@@ -43,40 +44,57 @@ export function useNotifications() {
     let interval: ReturnType<typeof setInterval> | null = null;
 
     const fetchNotifications = async () => {
-      const resp = await fetch("/api/notifications?limit=25", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-      const data = await resp.json().catch(() => ({}));
-      if (!mounted) return;
-      const items = (data.notifications || []) as NotificationItem[];
-      setNotifications(items);
-      const unread = items.filter((n) => !n.read_at).length;
-      setUnreadCount(unread);
-
-      const newest = items[0]?.id ?? null;
-      if (newest && lastSeenId.current && newest !== lastSeenId.current) {
-        playNotificationSound();
-        if (
-          typeof Notification !== "undefined" &&
-          Notification.permission === "granted"
-        ) {
-          new Notification(items[0]?.title ?? "New notification", {
-            body: items[0]?.body ?? "",
-          });
+      try {
+        const resp = await fetch("/api/notifications?limit=25", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Cache-Control": "no-store",
+          },
+          cache: "no-store",
+        });
+        if (!resp.ok) {
+          throw new Error(`Notifications request failed: ${resp.status}`);
         }
-      }
-      if (!lastSeenId.current && newest) {
-        lastSeenId.current = newest;
-      } else if (newest) {
-        lastSeenId.current = newest;
+        const data = await resp.json().catch(() => ({}));
+        if (!mounted) return;
+        const items = (data.notifications || []) as NotificationItem[];
+        setNotifications(items);
+        const unread = items.filter((n) => !n.read_at).length;
+        setUnreadCount(unread);
+        setError(null);
+
+        const newest = items[0]?.id ?? null;
+        if (newest && lastSeenId.current && newest !== lastSeenId.current) {
+          playNotificationSound();
+          if (
+            typeof Notification !== "undefined" &&
+            Notification.permission === "granted"
+          ) {
+            new Notification(items[0]?.title ?? "New notification", {
+              body: items[0]?.body ?? "",
+            });
+          }
+        }
+        if (!lastSeenId.current && newest) {
+          lastSeenId.current = newest;
+        } else if (newest) {
+          lastSeenId.current = newest;
+        }
+      } catch (err) {
+        if (!mounted) return;
+        console.error(err);
+        setError("Unable to load notifications");
       }
     };
 
+    const onFocus = () => fetchNotifications();
+    window.addEventListener("focus", onFocus);
     fetchNotifications();
     interval = setInterval(fetchNotifications, POLL_MS);
 
     return () => {
       mounted = false;
+      window.removeEventListener("focus", onFocus);
       if (interval) clearInterval(interval);
     };
   }, [accessToken]);
@@ -108,5 +126,5 @@ export function useNotifications() {
     setUnreadCount(0);
   };
 
-  return { notifications, unreadCount, markRead, markAllRead };
+  return { notifications, unreadCount, markRead, markAllRead, error };
 }

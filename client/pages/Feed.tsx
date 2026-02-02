@@ -58,6 +58,43 @@ export default function Feed() {
   const [domains, setDomains] = useState<string[]>([]);
   const [solveIssues, setSolveIssues] = useState<SolveIssue[]>([]);
 
+  const cacheKey = "ke_feed_cache";
+  const seenKey = "ke_feed_seen";
+
+  const getSeenIds = () => {
+    try {
+      return new Set<string>(JSON.parse(localStorage.getItem(seenKey) || "[]"));
+    } catch {
+      return new Set<string>();
+    }
+  };
+
+  const saveSeenIds = (ids: Set<string>) => {
+    localStorage.setItem(seenKey, JSON.stringify(Array.from(ids).slice(-500)));
+  };
+
+  const cacheUnseen = (items: FeedContribution[]) => {
+    const seen = getSeenIds();
+    const cached = items.filter((item) => !seen.has(String(item.id)));
+    localStorage.setItem(cacheKey, JSON.stringify(cached.slice(0, 100)));
+  };
+
+  const loadCached = () => {
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) || "[]");
+      if (Array.isArray(cached)) return cached as FeedContribution[];
+    } catch {
+      // ignore
+    }
+    return [] as FeedContribution[];
+  };
+
+  const markSeen = (id: string | number) => {
+    const seen = getSeenIds();
+    seen.add(String(id));
+    saveSeenIds(seen);
+  };
+
   useEffect(() => {
     let mounted = true;
 
@@ -74,8 +111,15 @@ export default function Feed() {
           .sort((a, b) => b._score - a._score)
           .map(({ _score, ...rest }) => rest);
         setContributions(ordered);
+        cacheUnseen(ordered);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        const cached = loadCached();
+        if (cached.length > 0) {
+          setContributions(cached);
+        }
+      });
 
     // Fetch domains for filter suggestions
     fetch("/api/domains?stats=0")
@@ -138,7 +182,7 @@ export default function Feed() {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 pb-24 lg:pb-12">
         <section className="glass-panel rounded-3xl p-6 sm:p-10 mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-border bg-background/70 px-4 py-3">
+          <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-border bg-background/70 px-4 py-2">
             <SegmentedControl
               className="min-w-max"
               value={feedMode}
@@ -285,7 +329,10 @@ export default function Feed() {
                   <div
                     key={contribution.id}
                     className="glass-panel rounded-2xl p-6 hover:shadow-lg ios-transition ios-press cursor-pointer group"
-                    onClick={() => navigate(`/contribution/${contribution.id}`)}
+                    onClick={() => {
+                      markSeen(contribution.id);
+                      navigate(`/contribution/${contribution.id}`);
+                    }}
                   >
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="p-3 bg-primary/10 rounded-2xl h-fit border border-primary/10">

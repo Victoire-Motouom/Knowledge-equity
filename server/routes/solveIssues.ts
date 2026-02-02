@@ -98,11 +98,10 @@ export const handleCreateSolveIssue: RequestHandler = async (req, res) => {
 
     const { data: userRows } = await supabaseAdmin
       .from("users")
-      .select("id")
-      .neq("id", authUser.id);
+      .select("id");
 
     if (userRows && userRows.length > 0) {
-      await supabaseAdmin.from("notifications").insert(
+      const { error: notifyError } = await supabaseAdmin.from("notifications").insert(
         userRows.map((u: any) => ({
           user_id: u.id,
           title: "New solve issue",
@@ -110,6 +109,9 @@ export const handleCreateSolveIssue: RequestHandler = async (req, res) => {
           link: `/solve/${data.id}`,
         })),
       );
+      if (notifyError) {
+        console.error("Notification insert error:", notifyError);
+      }
     }
 
     return res.status(201).json({ issue: issuePayload });

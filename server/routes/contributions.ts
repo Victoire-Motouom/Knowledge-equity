@@ -246,11 +246,10 @@ export const handleCreateContribution: RequestHandler = async (req, res) => {
     if (!error && data?.[0]?.id) {
       const { data: userRows } = await supabaseAdmin
         .from("users")
-        .select("id")
-        .neq("id", appUser.id);
+        .select("id");
 
       if (userRows && userRows.length > 0) {
-        await supabaseAdmin.from("notifications").insert(
+        const { error: notifyError } = await supabaseAdmin.from("notifications").insert(
           userRows.map((u: any) => ({
             user_id: u.id,
             title: "New post created",
@@ -258,6 +257,9 @@ export const handleCreateContribution: RequestHandler = async (req, res) => {
             link: `/contribution/${data[0].id}`,
           })),
         );
+        if (notifyError) {
+          console.error("Notification insert error:", notifyError);
+        }
       }
     }
 
