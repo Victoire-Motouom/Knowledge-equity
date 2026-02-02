@@ -1,5 +1,5 @@
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,94 +12,87 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 38 38% 97%;
+    --foreground: 20 14% 10%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 33% 98%;
+    --card-foreground: 20 14% 10%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 20 14% 10%;
 
-    /* Deep indigo primary - intellectual, trustworthy */
-    --primary: 239 84% 26%;
-    --primary-foreground: 210 40% 98%;
+    /* Ember primary */
+    --primary: 14 78% 46%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Light slate secondary */
-    --secondary: 220 13% 91%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Warm sand secondary */
+    --secondary: 32 27% 90%;
+    --secondary-foreground: 20 14% 10%;
 
-    --muted: 220 13% 91%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 32 27% 90%;
+    --muted-foreground: 22 9% 38%;
 
-    /* Vibrant indigo accent */
-    --accent: 239 84% 46%;
-    --accent-foreground: 210 40% 98%;
+    /* Teal accent */
+    --accent: 173 55% 36%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 96%;
-    --ring: 239 84% 26%;
+    --border: 30 20% 86%;
+    --input: 30 20% 92%;
+    --ring: 14 78% 46%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 239 84% 26%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 239 84% 46%;
-
+    --sidebar-background: 35 33% 96%;
+    --sidebar-foreground: 20 14% 18%;
+    --sidebar-primary: 14 78% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 173 55% 36%;
     --sidebar-accent-foreground: 0 0% 100%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 239 84% 46%;
+    --sidebar-border: 30 20% 86%;
+    --sidebar-ring: 14 78% 46%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 20 18% 8%;
+    --foreground: 40 33% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 20 18% 10%;
+    --card-foreground: 40 33% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 20 18% 10%;
+    --popover-foreground: 40 33% 96%;
 
-    /* Deep indigo primary */
-    --primary: 239 84% 56%;
-    --primary-foreground: 222.2 84% 4.9%;
+    /* Ember primary */
+    --primary: 14 80% 58%;
+    --primary-foreground: 20 18% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 22 20% 18%;
+    --secondary-foreground: 40 33% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 22 20% 18%;
+    --muted-foreground: 30 12% 70%;
 
-    /* Vibrant indigo accent */
-    --accent: 239 84% 56%;
-    --accent-foreground: 222.2 84% 4.9%;
+    /* Teal accent */
+    --accent: 173 55% 45%;
+    --accent-foreground: 20 18% 10%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 33% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 239 84% 56%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 239 84% 56%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 239 84% 46%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 239 84% 56%;
+    --border: 22 16% 22%;
+    --input: 22 16% 22%;
+    --ring: 14 80% 58%;
+    --sidebar-background: 20 18% 10%;
+    --sidebar-foreground: 40 33% 96%;
+    --sidebar-primary: 14 80% 58%;
+    --sidebar-primary-foreground: 20 18% 10%;
+    --sidebar-accent: 173 55% 45%;
+    --sidebar-accent-foreground: 20 18% 10%;
+    --sidebar-border: 22 16% 22%;
+    --sidebar-ring: 14 80% 58%;
   }
 }
 
@@ -109,7 +102,88 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      "Instrument Sans",
+      system-ui,
+      -apple-system,
+      Segoe UI,
+      Roboto,
+      Helvetica,
+      Arial,
+      "Apple Color Emoji",
+      "Segoe UI Emoji";
+  }
+
+  .page-surface {
+    background-image:
+      radial-gradient(
+        circle at 20% 20%,
+        hsl(var(--accent) / 0.12),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        hsl(var(--primary) / 0.12),
+        transparent 45%
+      );
+  }
+
+  .glass-panel {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.85),
+      hsl(var(--card) / 0.55)
+    );
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 16px 40px -32px hsl(var(--foreground) / 0.25);
+    backdrop-filter: blur(14px);
+  }
+
+  /* Medium-density, discussion-first defaults */
+
+  /* iOS-like motion defaults (respects reduced motion) */
+  :root {
+    --ease-ios: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --dur-ios: 180ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --dur-ios: 1ms;
+    }
+  }
+
+  .ios-transition {
+    transition: all var(--dur-ios) var(--ease-ios);
+  }
+
+  .ios-press {
+    transform: translateZ(0);
+  }
+  .ios-press:active {
+    transform: scale(0.98);
+  }
+
+  h1 {
+    @apply scroll-m-20 text-3xl font-bold tracking-tight;
+    font-family: "Space Grotesk", sans-serif;
+  }
+  h2 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    font-family: "Space Grotesk", sans-serif;
+  }
+  h3 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    font-family: "Space Grotesk", sans-serif;
+  }
+  p {
+    @apply leading-7;
+  }
+
+  /* Better selection contrast in both modes */
+  ::selection {
+    background: hsl(var(--primary) / 0.18);
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {

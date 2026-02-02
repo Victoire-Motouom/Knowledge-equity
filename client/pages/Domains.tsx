@@ -1,240 +1,179 @@
 import Header from "@/components/Header";
-import { Globe, Users, FileText, TrendingUp } from "lucide-react";
-import { useState } from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  Globe,
+  Users,
+  FileText,
+  TrendingUp,
+  Sparkles,
+  Search,
+} from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+
+type DomainWithStats = {
+  id: string;
+  name: string;
+  description?: string;
+  created_at: string;
+  stats: {
+    domain: string;
+    total_contributions: number;
+    total_contributors: number;
+    total_ke: number;
+  };
+};
 
 export default function Domains() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [domains, setDomains] = useState<DomainWithStats[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const domains = [
-    {
-      id: "distributed-systems",
-      name: "Distributed Systems",
-      description:
-        "Consensus algorithms, scalability, fault tolerance, and distributed consensus",
-      icon: "🔄",
-      contributions: 156,
-      experts: 24,
-      keGenerated: 8240,
-      trending: true,
-    },
-    {
-      id: "react",
-      name: "React",
-      description:
-        "Frontend library, hooks, performance optimization, and component patterns",
-      icon: "⚛️",
-      contributions: 142,
-      experts: 19,
-      keGenerated: 7120,
-      trending: true,
-    },
-    {
-      id: "backend-architecture",
-      name: "Backend Architecture",
-      description:
-        "System design, database patterns, API design, and microservices",
-      icon: "🏗️",
-      contributions: 128,
-      experts: 22,
-      keGenerated: 6850,
-      trending: false,
-    },
-    {
-      id: "security",
-      name: "Security",
-      description:
-        "Cryptography, authentication, authorization, and vulnerability analysis",
-      icon: "🔒",
-      contributions: 94,
-      experts: 18,
-      keGenerated: 5620,
-      trending: true,
-    },
-    {
-      id: "devops",
-      name: "DevOps",
-      description:
-        "Infrastructure, deployment, monitoring, and operational excellence",
-      icon: "🚀",
-      contributions: 87,
-      experts: 15,
-      keGenerated: 4950,
-      trending: false,
-    },
-    {
-      id: "databases",
-      name: "Databases",
-      description:
-        "SQL, NoSQL, indexing, query optimization, and data modeling",
-      icon: "🗄️",
-      contributions: 112,
-      experts: 20,
-      keGenerated: 6320,
-      trending: true,
-    },
-    {
-      id: "machine-learning",
-      name: "Machine Learning",
-      description: "Algorithms, training, inference, and model optimization",
-      icon: "🤖",
-      contributions: 73,
-      experts: 12,
-      keGenerated: 4100,
-      trending: true,
-    },
-    {
-      id: "web-performance",
-      name: "Web Performance",
-      description: "Optimization, metrics, rendering, and user experience",
-      icon: "⚡",
-      contributions: 68,
-      experts: 11,
-      keGenerated: 3840,
-      trending: false,
-    },
-    {
-      id: "typescript",
-      name: "TypeScript",
-      description: "Type system, advanced patterns, and tooling ecosystem",
-      icon: "📘",
-      contributions: 82,
-      experts: 14,
-      keGenerated: 4620,
-      trending: false,
-    },
-    {
-      id: "testing",
-      name: "Testing",
-      description:
-        "Unit tests, integration tests, E2E testing, and test strategies",
-      icon: "✅",
-      contributions: 65,
-      experts: 10,
-      keGenerated: 3680,
-      trending: false,
-    },
-  ];
+  useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    setError(null);
 
-  const filteredDomains = domains.filter(
-    (domain) =>
-      domain.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      domain.description.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+    fetch("/api/domains?stats=1")
+      .then((r) => r.json())
+      .then((data) => {
+        if (!mounted) return;
+        setDomains((data.domains as DomainWithStats[]) || []);
+      })
+      .catch((e) => {
+        console.error(e);
+        if (!mounted) return;
+        setError("Failed to load domains");
+      })
+      .finally(() => mounted && setLoading(false));
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const filteredDomains = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return domains;
+    return domains.filter((d) => {
+      return (
+        d.name.toLowerCase().includes(term) ||
+        (d.description || "").toLowerCase().includes(term)
+      );
+    });
+  }, [domains, searchTerm]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background page-surface">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2 flex items-center gap-3">
-            <Globe className="w-8 h-8 text-primary" />
-            Knowledge Domains
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Explore focused areas of expertise in our knowledge commons
-          </p>
-        </div>
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 pb-24 lg:pb-12">
+        <section className="glass-panel rounded-3xl p-6 sm:p-10 mb-8">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                <Sparkles className="w-4 h-4 text-primary" />
+                Domain Atlas
+              </div>
+              <h1 className="text-4xl font-semibold text-foreground mt-3 flex items-center gap-3">
+                <Globe className="w-8 h-8 text-primary" />
+                Knowledge Domains
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                Explore high-signal areas and the communities shaping them.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-background/60 px-4 py-3">
+              <div className="text-xs text-muted-foreground">
+                Domains indexed
+              </div>
+              <div className="text-2xl font-semibold text-foreground">
+                {domains.length}
+              </div>
+            </div>
+          </div>
 
-        {/* Search */}
-        <div className="mb-8">
-          <input
-            type="text"
-            placeholder="Search domains..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
-          />
-        </div>
+          <div className="mt-6 relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Search domains..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-11 pr-4 py-3 border border-border rounded-2xl bg-background/70 focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+            />
+          </div>
+        </section>
 
-        {/* Trending Badge */}
-        {filteredDomains.some((d) => d.trending) && (
-          <div className="mb-6">
-            <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-              🔥 Trending domains have recent high-quality activity
-            </span>
+        {loading && (
+          <div className="text-sm text-muted-foreground">Loading domains…</div>
+        )}
+
+        {error && (
+          <Alert variant="destructive" className="mt-3">
+            <AlertTitle>Couldn’t load domains</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        {!loading && !error && filteredDomains.length === 0 && (
+          <div className="text-sm text-muted-foreground">
+            No domains found. (Have you run the Supabase migrations and added
+            domains?)
           </div>
         )}
 
-        {/* Domains Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredDomains.map((domain) => (
             <div
               key={domain.id}
-              className={`border rounded-xl p-6 hover:shadow-lg transition-all cursor-pointer group ${
-                domain.trending
-                  ? "border-accent/50 bg-accent/5"
-                  : "border-border"
-              }`}
+              className="glass-panel rounded-2xl p-6 hover:shadow-lg transition-all"
             >
-              {/* Header */}
               <div className="flex items-start justify-between mb-4">
-                <div className="flex items-start gap-3">
-                  <div className="text-3xl">{domain.icon}</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                      {domain.name}
-                    </h3>
-                    {domain.trending && (
-                      <span className="text-xs font-semibold text-accent">
-                        🔥 Trending
-                      </span>
-                    )}
-                  </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">
+                    {domain.name}
+                  </h3>
+                  {domain.description && (
+                    <p className="text-muted-foreground text-sm mt-2">
+                      {domain.description}
+                    </p>
+                  )}
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-muted-foreground text-sm mb-4">
-                {domain.description}
-              </p>
-
-              {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-3 pt-4 border-t border-border">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-border">
                 <div>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">
                     <FileText className="w-3 h-3" />
                     <span>Contributions</span>
                   </div>
                   <div className="text-2xl font-bold text-primary">
-                    {domain.contributions}
+                    {domain.stats.total_contributions}
                   </div>
                 </div>
                 <div>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">
                     <Users className="w-3 h-3" />
-                    <span>Experts</span>
+                    <span>Contributors</span>
                   </div>
                   <div className="text-2xl font-bold text-primary">
-                    {domain.experts}
+                    {domain.stats.total_contributors}
                   </div>
                 </div>
                 <div>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">
                     <TrendingUp className="w-3 h-3" />
-                    <span>KE Generated</span>
+                    <span>Total KE</span>
                   </div>
                   <div className="text-2xl font-bold text-primary">
-                    {(domain.keGenerated / 1000).toFixed(1)}k
+                    {domain.stats.total_ke}
                   </div>
                 </div>
               </div>
-
-              {/* CTA */}
-              <button className="w-full mt-4 bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                Explore Domain
-              </button>
             </div>
           ))}
         </div>
-
-        {filteredDomains.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">
-              No domains match your search. Try different keywords.
-            </p>
-          </div>
-        )}
       </main>
     </div>
   );

@@ -47,7 +47,7 @@ export default function HowItWorks() {
     {
       question: "What is Knowledge Equity (KE)?",
       answer:
-        "Knowledge Equity is a reputation system that measures the value of your contributions to the platform. Unlike follower counts or upvotes, KE is earned through validated, expert-reviewed content. One expert's review of your work is worth more than many casual votes.",
+        "Knowledge Equity is a reputation system that measures the value of your contributions to the platform. Unlike follower counts or popularity metrics, KE is earned through validated, expert-reviewed content. One expert's review of your work is worth more than many casual votes.",
     },
     {
       question: "How is my KE calculated?",
@@ -120,7 +120,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
