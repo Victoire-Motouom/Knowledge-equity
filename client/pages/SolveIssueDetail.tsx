@@ -3,6 +3,7 @@ import { useAuth } from "@/auth/AuthContext";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { SolveIssue, SolveIssueComment } from "@shared/api";
+import EmojiAvatar from "@/components/EmojiAvatar";
 import { renderMarkdown } from "@/lib/markdown";
 import { handleMarkdownPaste } from "@/lib/pasteMarkdown";
 
@@ -89,7 +90,8 @@ export default function SolveIssueDetail() {
             </div>
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                <span className="font-semibold text-foreground">
+                <span className="inline-flex items-center gap-2 font-semibold text-foreground">
+                  <EmojiAvatar handle={comment.author} size="sm" />
                   {comment.author}
                 </span>
                 <span>•</span>

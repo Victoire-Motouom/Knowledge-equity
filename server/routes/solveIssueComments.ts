@@ -122,12 +122,10 @@ export const handleCreateSolveIssueComment: RequestHandler = async (
   try {
     const parsed = SolveIssueCommentCreateSchema.safeParse(req.body);
     if (!parsed.success) {
-      return res
-        .status(400)
-        .json({
-          error: "Invalid request body",
-          details: parsed.error.flatten(),
-        });
+      return res.status(400).json({
+        error: "Invalid request body",
+        details: parsed.error.flatten(),
+      });
     }
 
     const authUser = req.auth?.user;

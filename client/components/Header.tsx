@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Zap,
   Menu,
@@ -6,6 +6,7 @@ import {
   PlusSquare,
   Trophy,
   Grid3X3,
+  Bell,
   User,
   Settings,
   GraduationCap,
@@ -19,9 +20,11 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useSupabaseAuth } from "@/hooks/useSupabaseAuth";
+import { useNotifications } from "@/hooks/useNotifications";
 import { haptic } from "@/lib/haptics";
 import { IosDrawer } from "@/components/ui/ios-drawer";
 import { useTheme } from "next-themes";
+import EmojiAvatar from "@/components/EmojiAvatar";
 
 export default function Header() {
   const createTarget = "/contribute";
@@ -36,6 +39,7 @@ export default function Header() {
         <div className="px-3 sm:px-4">
           <div className="h-14 flex items-center justify-between">
             <div className="flex items-center gap-1">
+              <NotificationBell />
               <button
                 type="button"
                 aria-label="Menu"
@@ -165,6 +169,7 @@ export default function Header() {
 
             {/* Right controls */}
             <div className="flex items-center gap-2 sm:gap-4">
+              <NotificationBell />
               <button
                 type="button"
                 aria-label="Toggle theme"
@@ -285,6 +290,93 @@ export default function Header() {
   );
 }
 
+function NotificationBell() {
+  const navigate = useNavigate();
+  const { notifications, unreadCount, markAllRead, markRead } =
+    useNotifications();
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handleClick = (event: MouseEvent) => {
+      if (!menuRef.current) return;
+      if (!menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open]);
+
+  return (
+    <div className="relative" ref={menuRef}>
+      <button
+        type="button"
+        aria-label="Notifications"
+        onClick={() => {
+          if (
+            typeof Notification !== "undefined" &&
+            Notification.permission === "default"
+          ) {
+            Notification.requestPermission();
+          }
+          setOpen((prev) => !prev);
+        }}
+        className="relative p-2 rounded-lg hover:bg-secondary ios-transition ios-press"
+      >
+        <Bell className="h-5 w-5" />
+        {unreadCount > 0 && (
+          <span className="absolute -top-1 -right-1 h-5 min-w-[1.25rem] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold flex items-center justify-center">
+            {unreadCount > 99 ? "99+" : unreadCount}
+          </span>
+        )}
+      </button>
+      {open && (
+        <div className="absolute right-0 mt-2 w-72 rounded-xl border border-border bg-popover shadow-lg">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-border">
+            <span className="text-sm font-semibold">Notifications</span>
+            <button
+              type="button"
+              onClick={() => markAllRead()}
+              className="text-xs text-primary hover:underline"
+            >
+              Mark all read
+            </button>
+          </div>
+          <div className="max-h-72 overflow-auto">
+            {notifications.length === 0 ? (
+              <div className="px-3 py-4 text-sm text-muted-foreground">
+                No notifications yet.
+              </div>
+            ) : (
+              notifications.map((n) => (
+                <button
+                  key={n.id}
+                  type="button"
+                  onClick={() => {
+                    markRead(n.id);
+                    if (n.link) {
+                      navigate(n.link);
+                      setOpen(false);
+                    }
+                  }}
+                  className={`w-full text-left px-3 py-3 border-b border-border last:border-b-0 hover:bg-secondary/60 ${
+                    n.read_at ? "text-muted-foreground" : "text-foreground"
+                  }`}
+                >
+                  <div className="text-sm font-medium">{n.title}</div>
+                  {n.body && <div className="text-xs mt-1">{n.body}</div>}
+                </button>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function MobileNavItem(props: { to: string; label: string; Icon: any }) {
   return (
     <Link
@@ -360,7 +452,13 @@ function AuthControls() {
         className="p-2 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80"
         aria-label="Profile menu"
       >
-        <User className="h-5 w-5" />
+        <EmojiAvatar
+          handle={
+            user.user_metadata?.handle || user.user_metadata?.name || user.email
+          }
+          size="sm"
+          className="h-5 w-5"
+        />
       </button>
       {open && (
         <div className="absolute right-0 mt-2 w-40 bg-popover border border-border rounded-lg shadow-lg ios-transition">

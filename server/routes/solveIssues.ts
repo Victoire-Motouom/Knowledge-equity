@@ -48,12 +48,10 @@ export const handleCreateSolveIssue: RequestHandler = async (req, res) => {
   try {
     const parsed = SolveIssueCreateSchema.safeParse(req.body);
     if (!parsed.success) {
-      return res
-        .status(400)
-        .json({
-          error: "Invalid request body",
-          details: parsed.error.flatten(),
-        });
+      return res.status(400).json({
+        error: "Invalid request body",
+        details: parsed.error.flatten(),
+      });
     }
 
     const authUser = req.auth?.user;
@@ -85,20 +83,36 @@ export const handleCreateSolveIssue: RequestHandler = async (req, res) => {
         .json({ error: error?.message || "Failed to create issue" });
     }
 
-    return res.status(201).json({
-      issue: {
-        id: data.id,
-        title: data.title,
-        summary: data.summary,
-        domain: data.domain,
-        impact: data.impact,
-        actionNeeded: data.action_needed,
-        status: data.status,
-        authorId: data.author ?? undefined,
-        authorHandle: data.users?.handle || undefined,
-        createdAt: data.created_at,
-      },
-    });
+    const issuePayload = {
+      id: data.id,
+      title: data.title,
+      summary: data.summary,
+      domain: data.domain,
+      impact: data.impact,
+      actionNeeded: data.action_needed,
+      status: data.status,
+      authorId: data.author ?? undefined,
+      authorHandle: data.users?.handle || undefined,
+      createdAt: data.created_at,
+    };
+
+    const { data: userRows } = await supabaseAdmin
+      .from("users")
+      .select("id")
+      .neq("id", authUser.id);
+
+    if (userRows && userRows.length > 0) {
+      await supabaseAdmin.from("notifications").insert(
+        userRows.map((u: any) => ({
+          user_id: u.id,
+          title: "New solve issue",
+          body: `${data.users?.handle || "Someone"} posted: ${data.title}`,
+          link: `/solve/${data.id}`,
+        })),
+      );
+    }
+
+    return res.status(201).json({ issue: issuePayload });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "internal" });
@@ -155,12 +169,10 @@ export const handleUpdateSolveIssueStatus: RequestHandler = async (
   try {
     const parsed = SolveIssueStatusUpdateSchema.safeParse(req.body);
     if (!parsed.success) {
-      return res
-        .status(400)
-        .json({
-          error: "Invalid request body",
-          details: parsed.error.flatten(),
-        });
+      return res.status(400).json({
+        error: "Invalid request body",
+        details: parsed.error.flatten(),
+      });
     }
 
     const id = Number(req.params.id);

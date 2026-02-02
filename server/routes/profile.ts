@@ -353,11 +353,9 @@ export const handleProfileMeUpdate: RequestHandler = async (req, res) => {
       .single();
 
     if (userAfterErr || !userAfter) {
-      return res
-        .status(500)
-        .json({
-          error: userAfterErr?.message || "Failed to load updated profile",
-        });
+      return res.status(500).json({
+        error: userAfterErr?.message || "Failed to load updated profile",
+      });
     }
 
     const { data: expertiseRows, error: expErr } = await supabaseAdmin

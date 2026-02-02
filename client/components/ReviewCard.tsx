@@ -1,4 +1,5 @@
 import { formatRelativeTime } from "@/lib/time";
+import EmojiAvatar from "@/components/EmojiAvatar";
 import { cn } from "@/lib/utils";
 import { handleMarkdownPaste } from "@/lib/pasteMarkdown";
 import { useAuth } from "@/auth/AuthContext";
@@ -188,7 +189,8 @@ function CommentNode(props: {
           )}
         >
           <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">
+            <span className="inline-flex items-center gap-2 font-semibold text-foreground">
+              <EmojiAvatar handle={node.comment.author} size="sm" />
               {node.comment.author}
             </span>
             {node.comment.created_at && (
@@ -565,7 +567,8 @@ export function ReviewCard(props: {
                   {replyTo ? (
                     <>
                       Replying to{" "}
-                      <span className="font-medium text-foreground">
+                      <span className="inline-flex items-center gap-2 font-medium text-foreground">
+                        <EmojiAvatar handle={replyTo.author} size="sm" />
                         {replyTo.author}
                       </span>
                       <button

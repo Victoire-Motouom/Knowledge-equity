@@ -243,6 +243,24 @@ export const handleCreateContribution: RequestHandler = async (req, res) => {
         .upsert({ name: normalizedDomain }, { onConflict: "name" });
     }
 
+    if (!error && data?.[0]?.id) {
+      const { data: userRows } = await supabaseAdmin
+        .from("users")
+        .select("id")
+        .neq("id", appUser.id);
+
+      if (userRows && userRows.length > 0) {
+        await supabaseAdmin.from("notifications").insert(
+          userRows.map((u: any) => ({
+            user_id: u.id,
+            title: "New post created",
+            body: `${appUser.handle} posted: ${sanitizedTitle}`,
+            link: `/contribution/${data[0].id}`,
+          })),
+        );
+      }
+    }
+
     res.status(201).json({ contribution: data?.[0] ?? null });
   } catch (err) {
     console.error(err);

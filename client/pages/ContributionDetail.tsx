@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { sortReviews, type ReviewSortMode } from "@/lib/reviewSort";
+import EmojiAvatar from "@/components/EmojiAvatar";
 import { renderMarkdown } from "@/lib/markdown";
 import type { ContributionDetailResponse } from "@shared/api";
 
@@ -82,7 +83,11 @@ export default function ContributionDetail() {
                     {data.title}
                   </h1>
                   <div className="text-sm text-muted-foreground">
-                    <span className="font-medium">{data.author}</span> •{" "}
+                    <span className="inline-flex items-center gap-2 font-medium">
+                      <EmojiAvatar handle={data.author} size="sm" />
+                      {data.author}
+                    </span>
+                    <span className="mx-2">•</span>
                     <span className="bg-muted/60 text-foreground px-2 py-0.5 rounded-md border border-border">
                       {data.domain}
                     </span>

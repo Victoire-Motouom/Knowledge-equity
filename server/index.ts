@@ -34,6 +34,11 @@ import {
   handleCreateSolveIssueComment,
   handleGetSolveIssueComments,
 } from "./routes/solveIssueComments";
+import {
+  handleGetNotifications,
+  handleMarkAllRead,
+  handleMarkNotificationRead,
+} from "./routes/notifications";
 import { requireAuth } from "./lib/authMiddleware";
 import { rateLimit } from "./lib/rateLimit";
 import { rateLimitUpstash } from "./lib/rateLimitUpstash";
@@ -209,6 +214,29 @@ export function createServer() {
     handleSubmitReview,
   );
   app.get("/api/contributions/:id/reviews", handleGetReviews);
+
+  // Notifications
+  app.get(
+    "/api/notifications",
+    rateLimitUpstash({ windowMs: 60_000, max: 120, prefix: "notifications" }),
+    maybeLocalRateLimit({ windowMs: 60_000, max: 120 }),
+    requireAuth,
+    handleGetNotifications,
+  );
+  app.patch(
+    "/api/notifications/:id/read",
+    rateLimitUpstash({ windowMs: 60_000, max: 120, prefix: "notifications" }),
+    maybeLocalRateLimit({ windowMs: 60_000, max: 120 }),
+    requireAuth,
+    handleMarkNotificationRead,
+  );
+  app.post(
+    "/api/notifications/mark-all-read",
+    rateLimitUpstash({ windowMs: 60_000, max: 60, prefix: "notifications" }),
+    maybeLocalRateLimit({ windowMs: 60_000, max: 60 }),
+    requireAuth,
+    handleMarkAllRead,
+  );
 
   return app;
 }

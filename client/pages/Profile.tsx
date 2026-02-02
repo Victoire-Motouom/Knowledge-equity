@@ -1,3 +1,4 @@
+import EmojiAvatar from "@/components/EmojiAvatar";
 import Header from "@/components/Header";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useParams } from "react-router-dom";
@@ -123,8 +124,9 @@ export default function Profile({
             <section className="glass-panel rounded-3xl p-6 sm:p-8 mb-8">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                 <div>
-                  <h1 className="text-4xl font-semibold text-foreground mb-2">
-                    @{profile.handle}
+                  <h1 className="text-4xl font-semibold text-foreground mb-2 inline-flex items-center gap-3">
+                    <EmojiAvatar handle={profile.handle} size="lg" />@
+                    {profile.handle}
                   </h1>
                   <div className="flex flex-wrap gap-3">
                     {primaryDomains.map((d) => (

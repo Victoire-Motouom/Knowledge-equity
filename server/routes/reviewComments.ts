@@ -127,12 +127,10 @@ export const handleCreateReviewComment: RequestHandler = async (req, res) => {
   try {
     const parsed = ReviewCommentCreateSchema.safeParse(req.body);
     if (!parsed.success) {
-      return res
-        .status(400)
-        .json({
-          error: "Invalid request body",
-          details: parsed.error.flatten(),
-        });
+      return res.status(400).json({
+        error: "Invalid request body",
+        details: parsed.error.flatten(),
+      });
     }
 
     const authUser = req.auth?.user;

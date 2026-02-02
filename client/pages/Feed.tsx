@@ -16,6 +16,7 @@ import {
   type ContributionType,
   type SolveIssue,
 } from "@shared/api";
+import EmojiAvatar from "@/components/EmojiAvatar";
 import { renderMarkdown } from "@/lib/markdown";
 import { useAuth } from "@/auth/AuthContext";
 
@@ -298,7 +299,11 @@ export default function Feed() {
                               {contribution.title}
                             </h2>
                             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-                              <span className="font-medium">
+                              <span className="inline-flex items-center gap-2 font-medium">
+                                <EmojiAvatar
+                                  handle={contribution.author}
+                                  size="sm"
+                                />
                                 {contribution.author}
                               </span>
                               <span>•</span>

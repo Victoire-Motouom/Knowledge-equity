@@ -1,3 +1,4 @@
+import EmojiAvatar from "@/components/EmojiAvatar";
 import Header from "@/components/Header";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Trophy, TrendingUp, Star, Sparkles, Filter } from "lucide-react";
@@ -204,8 +205,9 @@ export default function Leaderboard() {
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-2">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground">
-                        @{leader.handle}
+                      <h3 className="text-xl font-bold text-foreground inline-flex items-center gap-2">
+                        <EmojiAvatar handle={leader.handle} size="sm" />@
+                        {leader.handle}
                       </h3>
                       <div className="flex flex-wrap gap-2 mt-2">
                         {(leader.domains || []).slice(0, 6).map((domain) => (

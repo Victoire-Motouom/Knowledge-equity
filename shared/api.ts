@@ -167,6 +167,23 @@ export interface UserStats {
   domains: number;
 }
 
+// ==========================================================================
+// NOTIFICATION TYPES
+// ==========================================================================
+
+export interface NotificationItem {
+  id: number;
+  title: string;
+  body?: string | null;
+  link?: string | null;
+  created_at: string;
+  read_at?: string | null;
+}
+
+export interface NotificationsResponse {
+  notifications: NotificationItem[];
+}
+
 // ============================================================================
 // LEADERBOARD TYPES
 // ============================================================================
