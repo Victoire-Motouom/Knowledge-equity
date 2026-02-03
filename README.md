@@ -14,7 +14,7 @@ Full-stack React + Express + Supabase app for earning **Knowledge Equity (KE)** 
 ### 1) Install deps
 
 ```bash
-pnpm install
+npm install
 ```
 
 ### 2) Configure environment
@@ -56,7 +56,7 @@ Migrations live in `supabase/migrations/`.
 ### 4) Run dev server
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 Vite runs the SPA and mounts the Express API under `/api`.
@@ -64,10 +64,10 @@ Vite runs the SPA and mounts the Express API under `/api`.
 ## Useful Scripts
 
 ```bash
-pnpm typecheck
-pnpm test
-pnpm build
-pnpm start
+npm run typecheck
+npm run test
+npm run build
+npm run start
 ```
 
 ## Architecture Overview
