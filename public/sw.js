@@ -1,6 +1,6 @@
 const CACHE_NAME = "ke-app-v1";
-const OFFLINE_URL = "/offline.html";
-const PRECACHE_URLS = ["/", "/manifest.webmanifest", "/favicon.ico", OFFLINE_URL];
+const OFFLINE_URL = "offline.html";
+const PRECACHE_URLS = ["./", "manifest.webmanifest", "favicon.ico", OFFLINE_URL];
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
